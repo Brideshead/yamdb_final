@@ -134,7 +134,9 @@ class SignupSerializer(serializers.Serializer):
     username = serializers.CharField(
         required=True,
         max_length=150,
-        validators=[validate_username,],
+        validators=[
+            validate_username,
+        ],
     )
 
     email = serializers.EmailField(
