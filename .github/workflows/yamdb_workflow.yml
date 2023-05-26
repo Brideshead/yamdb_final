@@ -60,7 +60,8 @@ jobs:
           username: ${{ secrets.USER }}
           key: ${{ secrets.SSH_KEY }}
           passphrase: ${{ secrets.PASSPHRASE }}
-          script: |
+          script:
+            sudo docker pull ${{ secrets.DOCKER_USERNAME }}/yamdb_final 
             sudo docker-compose stop
             sudo docker-compose rm web
             touch .env
@@ -83,4 +84,4 @@ jobs:
         token: ${{ secrets.TELEGRAM_TOKEN }}
         message: ${{ github.workflow }} успешно выполнен!
 
-#test 16
+#test 17
