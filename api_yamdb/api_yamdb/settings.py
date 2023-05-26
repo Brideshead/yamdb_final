@@ -9,7 +9,7 @@ SECRET_KEY = os.getenv(
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 
-DEBUG = False
+DEBUG = True
 
 ALLOWED_HOSTS = ['*']
 
