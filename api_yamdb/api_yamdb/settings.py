@@ -7,11 +7,16 @@ SECRET_KEY = os.getenv(
     default="123",
 )
 
-BASE_DIR = Path(__file__).resolve().parent.parent
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 DEBUG = False
 
-ALLOWED_HOSTS = ['*']
+ALLOWED_HOSTS = [
+    'localhost',
+    '127.0.0.1',
+    '51.250.93.202',
+    'web',
+]
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -43,7 +48,8 @@ MIDDLEWARE = [
 
 ROOT_URLCONF = 'api_yamdb.urls'
 
-TEMPLATES_DIR = BASE_DIR / 'templates'
+TEMPLATES_DIR = os.path.join(BASE_DIR, 'templates')
+
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
@@ -64,31 +70,14 @@ WSGI_APPLICATION = 'api_yamdb.wsgi.application'
 
 DATABASES = {
     'default': {
-        'ENGINE': os.getenv(
-            'DB_ENGINE',
-            default='django.db.backends.postgresql',
-        ),
-        'NAME': os.getenv(
-            'DB_NAME',
-            default='postgres',
-        ),
-        'USER': os.getenv(
-            'POSTGRES_USER',
-            default='postgres',
-        ),
-        'PASSWORD': os.getenv(
-            'POSTGRES_PASSWORD',
-            default='1234',
-        ),
-        'HOST': os.getenv(
-            'DB_HOST',
-            default='db',
-        ),
-        'PORT': os.getenv(
-            'DB_PORT',
-            default='5432',
-        ),
-    },
+        'ENGINE': os.getenv('DB_ENGINE',
+                            default='django.db.backends.postgresql'),
+        'NAME': os.getenv('DB_NAME'),
+        'USER': os.getenv('POSTGRES_USER'),
+        'PASSWORD': os.getenv('POSTGRES_PASSWORD'),
+        'HOST': os.getenv('DB_HOST'),
+        'PORT': os.getenv('DB_PORT')
+    }
 }
 
 AUTH_PASSWORD_VALIDATORS = [
@@ -118,8 +107,6 @@ USE_L10N = True
 
 USE_TZ = True
 
-STATIC_URL = '/static/'
-
 REST_FRAMEWORK = {
     'DEFAULT_AUTHENTICATION_CLASSES': (
         'rest_framework_simplejwt.authentication.JWTAuthentication',
@@ -136,6 +123,8 @@ SIMPLE_JWT = {
     'ACCESS_TOKEN_LIFETIME': timedelta(days=1),
     'AUTH_HEADER_TYPES': ('Bearer',),
 }
+
+STATIC_URL = '/static/'
 
 STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
