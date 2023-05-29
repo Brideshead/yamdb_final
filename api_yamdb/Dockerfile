@@ -1,6 +1,6 @@
 FROM python:3.7-slim
 WORKDIR /app
-COPY requirements.txt .
+COPY /app/requirements.txt .
 run pip install --upgrade pip
 RUN pip3 install -r /app/requirements.txt --no-cache-dir
 COPY . .
