@@ -1,15 +1,9 @@
 FROM python:3.7-slim
-
 WORKDIR /app
-
 COPY /api_yamdb/requirements.txt .
-
-RUN pip3 install --upgrade pip
-ENV PIP_ROOT_USER_ACTION=ignore
-RUN pip3 install -r requirements.txt 
-
-ENV PYTHONPATH "${PYTHONPATH}:."
-
-CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:5000" ]
+RUN python -m pip install --upgrade pip
+RUN pip install -r /app/requirements.txt
+COPY /api_yamdb/ .
+CMD ["gunicorn", "api_yamdb.wsgi:application", "--bind", "0:8000" ]
 
 #hello
