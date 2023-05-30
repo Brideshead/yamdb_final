@@ -1,6 +1,6 @@
 # ЯП - Спринт 16 - CI и CD проекта api_yamdb
 
-![example workflow](https://github.com/brideshead/yamb_final/actions/workflows/main.yml/badge.svg)
+![yamdb_workflow](https://github.com/Brideshead/yamdb_final/actions/workflows/yamdb_workflow.yml/badge.svg)
 
 Проект развернут по адресу: http://51.250.80.17/admin/
 ## Описание 
@@ -140,6 +140,11 @@ docker-compose exec web python manage.py collectstatic --no-input
 docker-compose exec web python manage.py dumpdata > dumpPostrgeSQL.json 
 ```
 
+### Наполняем БД из файла фикстур:
+```bash
+docker-compose exec web python manage.py loaddata infra/fixtures.json
+```
+
 ### Останавливаем контейнеры:
 ```bash
 docker-compose down -v 
@@ -155,3 +160,8 @@ DB_PORT=5432
 ```
 ### Документация API YaMDb 
 Документация доступна по эндпойнту: http://51.250.80.17/redoc/
+
+
+### Автор проекта"
+
+![Богоевич Александр](https://github.com/Brideshead)
