@@ -6,7 +6,7 @@ COPY . .
 
 RUN pip3 install --upgrade pip
 ENV PIP_ROOT_USER_ACTION=ignore
-RUN pip3 install -r /api_yamdb/requirements.txt --no-cache-dir
+RUN pip3 install -r requirements.txt 
 
 ENV PYTHONPATH "${PYTHONPATH}:."
 
