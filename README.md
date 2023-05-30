@@ -164,4 +164,4 @@ DB_PORT=5432
 
 ### Автор проекта"
 
-![Богоевич Александр](https://github.com/Brideshead)
+[Богоевич Александр](https://github.com/Brideshead)
