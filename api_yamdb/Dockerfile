@@ -2,7 +2,7 @@ FROM python:3.7-slim
 
 WORKDIR /app
 
-COPY /app/requirements.txt .
+COPY /api_yamdb/requirements.txt .
 
 RUN pip3 install --upgrade pip
 ENV PIP_ROOT_USER_ACTION=ignore
